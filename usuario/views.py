@@ -17,25 +17,13 @@ def atualizar(request):
 def exibir(request):
     #  Buscar no banco de dados o usuario atual
     
-    produto = "camisa"
-    qtd = 2
-    valor_unitario = 50
-    valor_total = qtd * valor_unitario
-
-    pedido = {
-        'produto': produto,
-        'qtd': qtd,
-        'valor_unitario': valor_unitario,
-        'valor_total': valor_total
+    pedidos = {
+        '123': {'produto': 'camiseta', 'qtd': 2, 'valor': 49.99, 'total': 99.98},
+        '456': {'produto': 'calça', 'qtd': 1, 'valor': 99.99, 'total': 99.99},
+        '789': {'produto': 'tênis', 'qtd': 1, 'valor': 199.99, 'total': 199.99},
     }
 
-    produtos = [
-        'maça',
-        'laranja',
-        'uva'
-    ]
-
-    return render(request, 'exibir.html', {'pedido': pedido, 'produtos': produtos})
+    return render(request, 'exibir.html', {'pedidos': pedidos})
 
 def excluir(request):
     pass

@@ -1,25 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    {% if produtos %}
-        <!-- exibir produtos -->
-         {% for produto in produtos %}
-            {{ produto }}<br />
-         {% endfor %}
-    {% else %}
-        <h2>Não há produtos!</h2>
-    {% endif %}
-
-    <h1>Exibir</h1>
-    <br />
-    <strong>Produto:</strong> {{ pedido.produto }} <br />
-    <strong>Qtd:</strong> {{ pedido.qtd }}<br />
-    <strong>R$ unitário:</strong> {{ pedido.valor_unitario }}<br />
-    <strong>R$ total:</strong> {{ pedido.valor_total }}<br />
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>Exibir Pedidos</h1>
+        {% if pedidos %}
+            {% for chave, valor in pedidos.items %}
+                <h2>Pedido {{ chave }}</h2>
+                {{ valor.qtd }} x {{ valor.produto }} = R$ {{ valor.total }}
+            {% endfor %}
+        {% else %}
+            <h2>Não há pedidos!</h2>
+        {% endif %}
+    </body>
 </html>
