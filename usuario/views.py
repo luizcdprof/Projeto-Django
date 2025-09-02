@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
 
 # Create your views here.
+def home_view(request):
+    return render(request, 'home.html')
+
 def cadastrar(request):
     return render(request, 'cadastrar.html')
 
