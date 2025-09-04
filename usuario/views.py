@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
 def home_view(request):
@@ -7,11 +8,24 @@ def home_view(request):
 def cadastrar(request):
     return render(request, 'cadastrar.html')
 
-def login(request):
+def user_login(request):
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(
+            request,
+            username=username,
+            password=password
+        )
+
+        if user is not None:
+            login(request, user)
+            return redirect('home')
+
     return render(request, 'login.html')
 
-def logout(request):
-    logout()
+def user_logout(request):
+    logout(request)
     return redirect('usuario_login')
 
 def atualizar(request):
